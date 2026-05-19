@@ -4,25 +4,28 @@ import { PrismaClient, ProjectRole, TaskPriority, TaskStatus } from "@prisma/cli
 const prisma = new PrismaClient();
 
 async function main() {
-  const password = await bcrypt.hash("Password123!", 12);
+  const adminPassword = await bcrypt.hash("raiaman1234!", 12);
+  const memberPassword = await bcrypt.hash("raishivam1234!", 12);
 
   const admin = await prisma.user.upsert({
-    where: { email: "admin@example.com" },
+    where: { email: "raiaman@gmail.com" },
     update: {},
     create: {
-      name: "Admin User",
-      email: "admin@example.com",
-      password
+      name: "Aman Rai",
+      email: "raiaman@gmail.com",
+      password: adminPassword,
+      role: "ADMIN"
     }
   });
 
   const member = await prisma.user.upsert({
-    where: { email: "member@example.com" },
+    where: { email: "raishivam@gmail.com" },
     update: {},
     create: {
-      name: "Member User",
-      email: "member@example.com",
-      password
+      name: "Shivam Rai",
+      email: "raishivam@gmail.com",
+      password: memberPassword,
+      role: "MEMBER"
     }
   });
 

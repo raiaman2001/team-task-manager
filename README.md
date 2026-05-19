@@ -32,8 +32,8 @@ Frontend runs on `http://localhost:3000`.
 
 Seed script creates:
 
-- Admin: `admin@example.com` / `Password123!`
-- Member: `member@example.com` / `Password123!`
+- Admin: `raiaman@gmail.com` / `raiaman1234!`
+- Member: `raishivam@gmail.com` / `raishivam1234!`
 
 ## Railway Deployment
 

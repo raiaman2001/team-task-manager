@@ -7,11 +7,12 @@ const userSelect = {
   id: true,
   name: true,
   email: true,
+  role: true,
   createdAt: true,
   updatedAt: true
 };
 
-export async function signup(input: { name: string; email: string; password: string }) {
+export async function signup(input: { name: string; email: string; password: string; role?: "ADMIN" | "MEMBER" }) {
   const existing = await prisma.user.findUnique({ where: { email: input.email } });
 
   if (existing) {
@@ -23,7 +24,8 @@ export async function signup(input: { name: string; email: string; password: str
     data: {
       name: input.name,
       email: input.email,
-      password
+      password,
+      role: input.role || "MEMBER"
     },
     select: userSelect
   });

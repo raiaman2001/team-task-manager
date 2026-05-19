@@ -1,3 +1,4 @@
+export type SystemRole = "ADMIN" | "MEMBER";
 export type ProjectRole = "ADMIN" | "MEMBER";
 export type TaskPriority = "LOW" | "MEDIUM" | "HIGH";
 export type TaskStatus = "TODO" | "IN_PROGRESS" | "DONE";
@@ -6,6 +7,7 @@ export type User = {
   id: string;
   name: string;
   email: string;
+  role?: SystemRole;
   createdAt?: string;
   updatedAt?: string;
 };

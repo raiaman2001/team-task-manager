@@ -11,7 +11,7 @@ export async function login(input: { email: string; password: string }) {
   return data;
 }
 
-export async function signup(input: { name: string; email: string; password: string }) {
+export async function signup(input: { name: string; email: string; password: string; role?: "ADMIN" | "MEMBER" }) {
   const { data } = await api.post<{ user: User; token: string }>("/api/auth/signup", input);
   return data;
 }

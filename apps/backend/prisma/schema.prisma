@@ -12,6 +12,7 @@ model User {
   name      String
   email     String   @unique
   password  String
+  role      SystemRole @default(MEMBER)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
@@ -105,4 +106,9 @@ enum ActivityType {
   TASK_UPDATED
   TASK_DELETED
   TASK_STATUS_UPDATED
+}
+
+enum SystemRole {
+  ADMIN
+  MEMBER
 }

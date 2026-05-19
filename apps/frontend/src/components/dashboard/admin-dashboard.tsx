@@ -9,7 +9,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { getDashboard } from "@/lib/queries";
 import { formatDate } from "@/lib/utils";
 
-export function DashboardView() {
+export function AdminDashboard() {
   const { data, isLoading } = useQuery({
     queryKey: ["dashboard"],
     queryFn: getDashboard

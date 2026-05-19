@@ -7,7 +7,7 @@ import { useAuth } from "@/hooks/use-auth";
 
 export default function ProjectsPage() {
   const { data: user } = useAuth();
-  const isAdmin = user?.email.toLowerCase().includes("admin") || user?.name.toLowerCase().includes("admin");
+  const isAdmin = user?.role === "ADMIN";
 
   return (
     <AppShell>

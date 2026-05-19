@@ -10,12 +10,14 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Select } from "@/components/ui/select";
 import { login, signup } from "@/lib/auth";
 
 const schema = z.object({
   name: z.string().min(2).optional(),
   email: z.string().email(),
-  password: z.string().min(8)
+  password: z.string().min(8),
+  role: z.enum(["ADMIN", "MEMBER"]).optional()
 });
 
 type AuthValues = z.infer<typeof schema>;
@@ -27,7 +29,10 @@ export function AuthForm({ mode }: { mode: "login" | "signup" }) {
     handleSubmit,
     formState: { errors, isSubmitting }
   } = useForm<AuthValues>({
-    resolver: zodResolver(schema)
+    resolver: zodResolver(schema),
+    defaultValues: {
+      role: "MEMBER"
+    }
   });
 
   async function onSubmit(values: AuthValues) {
@@ -36,7 +41,8 @@ export function AuthForm({ mode }: { mode: "login" | "signup" }) {
         await signup({
           name: values.name ?? "",
           email: values.email,
-          password: values.password
+          password: values.password,
+          role: values.role
         });
       } else {
         await login({ email: values.email, password: values.password });
@@ -83,6 +89,17 @@ export function AuthForm({ mode }: { mode: "login" | "signup" }) {
               <Input id="password" type="password" placeholder="Enter your password" {...register("password")} autoComplete="new-password" />
               {errors.password ? <p className="text-sm text-destructive">{errors.password.message}</p> : null}
             </div>
+
+            {isSignup ? (
+              <div className="space-y-2">
+                <Label htmlFor="role">Role</Label>
+                <Select id="role" {...register("role")}>
+                  <option value="MEMBER">Member</option>
+                  <option value="ADMIN">Admin</option>
+                </Select>
+                {errors.role ? <p className="text-sm text-destructive">{errors.role.message}</p> : null}
+              </div>
+            ) : null}
 
             <Button className="w-full" type="submit" disabled={isSubmitting}>
               {isSubmitting ? "Please wait..." : isSignup ? "Create account" : "Sign in"}

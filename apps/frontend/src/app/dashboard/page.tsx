@@ -1,10 +1,16 @@
+"use client";
+
 import { AppShell } from "@/components/layout/app-shell";
-import { DashboardView } from "@/components/dashboard/dashboard-view";
+import { AdminDashboard } from "@/components/dashboard/admin-dashboard";
+import { MemberDashboard } from "@/components/dashboard/member-dashboard";
+import { useAuth } from "@/hooks/use-auth";
 
 export default function DashboardPage() {
+  const { data: user } = useAuth();
+  
   return (
     <AppShell>
-      <DashboardView />
+      {user?.role === "ADMIN" ? <AdminDashboard /> : <MemberDashboard />}
     </AppShell>
   );
 }

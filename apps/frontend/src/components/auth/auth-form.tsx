@@ -63,24 +63,24 @@ export function AuthForm({ mode }: { mode: "login" | "signup" }) {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
+          <form className="space-y-4" onSubmit={handleSubmit(onSubmit)} autoComplete="off">
             {isSignup ? (
               <div className="space-y-2">
                 <Label htmlFor="name">Name</Label>
-                <Input id="name" placeholder="Enter your name" {...register("name")} />
+                <Input id="name" placeholder="Enter your name" {...register("name")} autoComplete="off" />
                 {errors.name ? <p className="text-sm text-destructive">{errors.name.message}</p> : null}
               </div>
             ) : null}
 
             <div className="space-y-2">
               <Label htmlFor="email">Email</Label>
-              <Input id="email" type="email" placeholder="Enter your email" {...register("email")} />
+              <Input id="email" type="email" placeholder="Enter your email" {...register("email")} autoComplete="off" />
               {errors.email ? <p className="text-sm text-destructive">{errors.email.message}</p> : null}
             </div>
 
             <div className="space-y-2">
               <Label htmlFor="password">Password</Label>
-              <Input id="password" type="password" placeholder="Enter your password" {...register("password")} />
+              <Input id="password" type="password" placeholder="Enter your password" {...register("password")} autoComplete="new-password" />
               {errors.password ? <p className="text-sm text-destructive">{errors.password.message}</p> : null}
             </div>
 

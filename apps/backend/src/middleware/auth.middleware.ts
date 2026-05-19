@@ -8,7 +8,7 @@ export async function requireAuth(req: Request, _res: Response, next: NextFuncti
     const bearerToken = req.headers.authorization?.startsWith("Bearer ")
       ? req.headers.authorization.slice(7)
       : undefined;
-    const token = req.cookies?.accessToken ?? bearerToken;
+    const token = bearerToken ?? req.cookies?.accessToken;
 
     if (!token) {
       throw new ApiError(401, "Authentication required");

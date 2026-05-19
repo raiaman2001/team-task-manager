@@ -101,6 +101,7 @@ export function AuthForm({ mode }: { mode: "login" | "signup" }) {
               </div>
             ) : null}
 
+
             <Button className="w-full" type="submit" disabled={isSubmitting}>
               {isSubmitting ? "Please wait..." : isSignup ? "Create account" : "Sign in"}
             </Button>

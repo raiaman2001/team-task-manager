@@ -67,20 +67,20 @@ export function AuthForm({ mode }: { mode: "login" | "signup" }) {
             {isSignup ? (
               <div className="space-y-2">
                 <Label htmlFor="name">Name</Label>
-                <Input id="name" placeholder="Manish Singh" {...register("name")} />
+                <Input id="name" placeholder="Enter your name" {...register("name")} />
                 {errors.name ? <p className="text-sm text-destructive">{errors.name.message}</p> : null}
               </div>
             ) : null}
 
             <div className="space-y-2">
               <Label htmlFor="email">Email</Label>
-              <Input id="email" type="email" placeholder="you@company.com" {...register("email")} />
+              <Input id="email" type="email" placeholder="Enter your email" {...register("email")} />
               {errors.email ? <p className="text-sm text-destructive">{errors.email.message}</p> : null}
             </div>
 
             <div className="space-y-2">
               <Label htmlFor="password">Password</Label>
-              <Input id="password" type="password" placeholder="Password123!" {...register("password")} />
+              <Input id="password" type="password" placeholder="Enter your password" {...register("password")} />
               {errors.password ? <p className="text-sm text-destructive">{errors.password.message}</p> : null}
             </div>
 

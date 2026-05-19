@@ -38,7 +38,7 @@ export function MemberDashboard() {
       <Card>
         <CardHeader>
           <CardTitle>My Workspace Status</CardTitle>
-          <CardDescription>Keep track of what's happening around you.</CardDescription>
+          <CardDescription>Keep track of what&apos;s happening around you.</CardDescription>
         </CardHeader>
         <CardContent>
           {myTasksCount > 0 ? (

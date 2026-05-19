@@ -61,7 +61,9 @@ export function AppShell({ children }: { children: React.ReactNode }) {
           <header className="sticky top-0 z-10 flex h-16 items-center justify-between border-b bg-background/90 px-4 backdrop-blur md:px-8">
             <div>
               <p className="text-sm text-muted-foreground">Signed in as</p>
-              <p className="text-sm font-medium">{user?.name}</p>
+              <p className="text-sm font-medium">
+                {user?.name} {user?.role && <span className="text-muted-foreground">({user.role.charAt(0) + user.role.slice(1).toLowerCase()})</span>}
+              </p>
             </div>
             <div className="flex items-center gap-2">
               <Button
